@@ -25,9 +25,10 @@ class ChordHash:
 
     # TODO 1 implement a function adding a node
     def add_node(self, node_id):
-        if self.nodes[node_id] is not None:
-            return ERROR_MESSAGE
-        self.nodes[node_id] = {}
+        if node_id in self.nodes:
+            raise Exception(ERROR_MESSAGE)
+
+        self.nodes[node_id] = set()
 
     # TODO 2 implement the hash key function
     def hash_key(self, key):
