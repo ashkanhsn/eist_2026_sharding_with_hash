@@ -32,15 +32,27 @@ class ChordHash:
 
     # TODO 2 implement the hash key function
     def hash_key(self, key):
-        return
+        return fnv1a_hash(key) % self.size
 
     # TODO 3 implement the helper function find successor
     def find_successor(self, key):
-        return
+        hashed_key = self.hash_key(key)
+        possible_nodes = []
+        for node_id in self.nodes:
+            if node_id > hashed_key:
+                possible_nodes.append(node_id)
+        possible_nodes.sort()
+        if possible_nodes:
+            return min(possible_nodes)
+        else:
+            return min(self.nodes.keys())
 
     # TODO 4 implement the function inserting a key (use the find_successor function)
     def insert_key(self, key):
-        return
+        node = self.find_successor(key)
+        if node:
+            self.nodes[node].add(key)
+            return node
 
     # helper function for displaying the chord ring
     def print_ring(self):
