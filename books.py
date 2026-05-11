@@ -50,9 +50,8 @@ class ChordHash:
     # TODO 4 implement the function inserting a key (use the find_successor function)
     def insert_key(self, key):
         node = self.find_successor(key)
-        if node:
-            self.nodes[node].add(key)
-            return node
+        self.nodes[node].add(key)
+        return node
 
     # helper function for displaying the chord ring
     def print_ring(self):
