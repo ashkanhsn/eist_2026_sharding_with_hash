@@ -25,7 +25,9 @@ class ChordHash:
 
     # TODO 1 implement a function adding a node
     def add_node(self, node_id):
-        return
+        if self.nodes[node_id] is not None:
+            return ERROR_MESSAGE
+        self.nodes[node_id] = {}
 
     # TODO 2 implement the hash key function
     def hash_key(self, key):
@@ -47,11 +49,11 @@ class ChordHash:
             print(f"Node {node_id}: {self.nodes[node_id]}")
 
 
-with open('books.json', 'r') as json_file:
+with open("books.json", "r") as json_file:
     books_data = json.load(json_file)
 
 # Extract books list from JSON data
-books = books_data['books']
+books = books_data["books"]
 
 # Example usage
 chord = ChordHash(size=8)
